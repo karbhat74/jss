@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSSATEB Sports Website</title>
+    <link rel="stylesheet" href="styles.css">
+                <!-- About & Infrastructure CSS -->
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        /* About Section Styling */
+        #about{
+            background-image: url("images/main.jpg");
+            background-size: cover;
+            min-height: 100vh;
+            background-position: center; /* Centers the image */
+            background-attachment: fixed; /* Keeps the image fixed during scrolling */
+        }
+        
+        .about-section {
+            padding: 50px 20px;
+            background: linear-gradient(135deg, #f3f4f6, #e1e8f0);
+        }
+
+        .about-section h2 {
+            font-size: 2.5rem;
+            color: #266fee;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            color: #f5f0f0;
+            margin-bottom: 20px;
+            text-align: justify;
+        } 
+
+        .vision-mission {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        .vision, .mission {
+            /*flex: 1;
+            margin: 10px;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
+            flex: 1;
+            background-color: rgba(217, 237, 187, 0.8); /* Adds a white background with 80% opacity */
+            border-radius: 10px; /* Rounds the corners */
+            padding: 20px; /* Adds padding inside the box */
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow */
+            margin: 10px; /* Centers the box and adds spacing */
+            max-width: 800px; /* Limits the width */
+        }
+
+        .vision h3, .mission h3 {
+            font-size: 1.5rem;
+            color: #1a73e8;
+            margin-bottom: 10px;
+        }
+
+        .vision p, .mission ul {
+            font-size: 1rem;
+            color: #333;
+        }
+
+        .mission ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .mission ul li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .mission ul li::before {
+            content: '\2022';
+            position: absolute;
+            left: 0;
+            color: #1a73e8;
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+
+        .achievements {
+            /*margin-top: 40px;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
+
+            flex: 1;
+            background-color:  rgba(217, 237, 187, 0.8);/* Adds a white background with 80% opacity */
+            border-radius: 10px; /* Rounds the corners */
+            padding: 20px; /* Adds padding inside the box */
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow */
+            margin: 20px auto; /* Centers the box and adds spacing */
+            max-width: 800px; /* Limits the width */
+        }
+
+        .achievements h3 {
+            font-size: 1.5rem;
+            color: #1a73e8;
+            margin-bottom: 10px;
+        }
+
+        /* Infrastructure Section Styling */
+        #infrastructure{
+            background-image: url("images/main.jpg");
+            background-size: cover;
+            min-height: 100vh;
+            background-position: center; /* Centers the image */
+            background-attachment: fixed;
+        }
+
+        .infrastructure-section {
+            padding: 50px 20px;
+            background: linear-gradient(135deg, #ffffff, #e3f2fd);
+        }
+
+        .infrastructure-section h2 {
+            font-size: 2.5rem;
+            color: #266fee;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .infrastructure-content p {
+            font-size: 1.1rem;
+            color: #faf3f3;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .facilities {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        .outdoor, .indoor {
+            /*flex: 1;
+            margin: 10px;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
+
+            flex: 1;
+            background-color: rgba(255, 255, 255, 0.8); /* Adds a white background with 80% opacity */
+            border-radius: 10px; /* Rounds the corners */
+            padding: 20px; /* Adds padding inside the box */
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow */
+            margin: 10px ; /* Centers the box and adds spacing */
+            max-width: 800px; /* Limits the width */
+        }
+
+        .outdoor h3, .indoor h3 {
+            font-size: 1.5rem;
+            color: #0d47a1;
+            margin-bottom: 10px;
+        }
+
+        .outdoor ul, .indoor ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .outdoor ul li, .indoor ul li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .outdoor ul li::before, .indoor ul li::before {
+            content: '\2022';
+            position: absolute;
+            left: 0;
+            color: #0d47a1;
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+
+            /* Achievements Section */
+            #achievements{
+                background-image: url("images/main.jpg");
+                background-size: cover;
+                min-height: 100vh;
+                background-position: center; /* Centers the image */
+                background-attachment: fixed;
+            }
+
+            .achievements-section {
+                padding: 50px 20px;
+                background: linear-gradient(135deg, #fff, #e8f5e9);
+            }
+
+            .achievements-content h2{
+                font-size: 2.5rem;
+                color: #266fee;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+        
+            .achievements-content {
+                text-align: center;
+            }
+        
+            .achievement-list {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                margin-top: 30px;
+            }
+        
+            .achievement {
+                /*flex: 1;
+                margin: 10px;
+                padding: 20px;
+                background: #ffffff;
+                border-radius: 8px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
+
+                
+                background-color: rgba(255, 255, 255, 0.8); /* Adds a white background with 80% opacity */
+                border-radius: 10px; /* Rounds the corners */
+                padding: 20px; /* Adds padding inside the box */
+                box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow */
+                margin: 20px auto; /* Centers the box and adds spacing */
+                max-width: 800px; /* Limits the width */
+                color: black;
+                width: 350px; /* Set equal width */
+                height: 300px;
+            }
+        
+            .achievement h3 {
+                font-size: 1.5rem;
+                color: #2e7d32;
+                margin-bottom: 15px;
+            }
+        
+            .achievement ul {
+                list-style: none;
+                padding: 0;
+                text-align: left;
+            }
+        
+            .achievement ul li {
+                margin-bottom: 10px;
+                padding-left: 20px;
+                position: relative;
+            }
+        
+            .achievement ul li::before {
+                content: '\2022';
+                position: absolute;
+                left: 0;
+                color: #2e7d32;
+                font-size: 1.5rem;
+                line-height: 1;
+            }
+            .change_color{
+                color: black;
+            }
+
+            /* Events Section */
+            #events{
+                background-image: url("images/main.jpg");
+                background-size: cover;
+                min-height: 100vh;
+                background-position: center; /* Centers the image */
+                background-attachment: fixed;
+            }
+
+            .events h2{
+                font-size: 2.5rem;
+                color: #266fee;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            .events .container{
+                padding-top: 50px;
+                padding-bottom: 50px;
+            }
+
+            #login{
+                background-image: url("images/main.jpg");
+                background-size: cover;
+                min-height: 100vh;
+                background-position: center; /* Centers the image */
+                background-attachment: fixed;
+            }
+
+            #login h2{
+                font-size: 2.5rem;
+                color: #266fee;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            .logo {
+                color: #fff;
+                font-size: 1.5rem;
+                font-weight: bold;
+                text-decoration: none;
+            }
+
+            .logo img{
+                height: 38px;
+                width: 220px;
+            }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .vision-mission, .facilities {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .about-section h2, .infrastructure-section h2 {
+                font-size: 2rem;
+            }
+
+            .about-content p, .infrastructure-content p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        
+        <nav class="navbar">
+            <a href="#" class="logo"><img src="images/logo1.png" alt="logo"></a>
+            <a href="#home">Home</a>
+            <a href="#about">About Us</a>
+            <a href="#infrastructure">Infrastructure & Facilities</a>
+            <a href="#events">Event</a>
+            <a href="#achievements">Achievements</a>
+            <a href="#login">Login</a>
+        </nav>
+    </header>
+
+    <section id="home" class="section">
+        <h1>Welcome to JSSATEB Sports Department</h1>
+        <p>Explore the vibrant sports culture at JSSATEB.</p>
+    </section>
+
+        <!-- About Section HTML -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <h2>About Us</h2>
+                <p class="intro">
+                JSS Academy of Technical Education, Bengaluru has been giving equal importance to both Curricular, Co-curricular and extracurricular activities.<br>To encourage the students to participate in sports activities, the institute has created all the necessary sports facilities<br>Department of Physical Education and sports was started in the year 1997 aims at all round development of the students’ personality through sports activities. Our college Sports department has been organizing many sports events such as VTU Inter collegiate, Bengaluru South Zone Cricket Tournaments, Inter-zone sports events.
+                </p>
+                <div class="vision-mission">
+                    <div class="vision">
+                        <h3 class="center-div">Our Vision</h3>
+                        <p>
+                            To attain the highest position in the sports arena at the state level through consistent and sustainable development programs.
+                        </p>
+                    </div>
+                    <div class="mission">
+                        <h3 class="center-div">Our Mission</h3>
+                        <ul>
+                            <li>Providing opportunities to participate in recreational and competitive sporting activities.</li>
+                            <li>Creating state-of-the-art infrastructure for diverse sports and games.</li>
+                            <li>Fostering better human relations through sports and games.</li>
+                            <li>Encouraging discipline, leadership qualities, and teamwork.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="achievements">
+                    <h3 class="center-div">Key Achievements</h3>
+                    <p class="change_color" style="color: #333;">We take pride in hosting and participating in numerous inter-collegiate, zonal, and state-level events, with our teams consistently excelling across various sports.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Infrastructure and Facilities Section HTML -->
+    <section id="infrastructure" class="infrastructure-section">
+        <div class="container">
+            <div class="infrastructure-content">
+                <h2>Infrastructure & Facilities</h2>
+                <p class="intro">
+                The sports infrastructure at JSSATEB is designed to promote physical fitness and foster sportsmanship among students.<br>The campus features well-maintained facilities, including spacious grounds for outdoor sports like cricket, football, and athletics, as well as courts for basketball, volleyball, and tennis.<br>Indoor sports are supported with dedicated spaces for badminton, table tennis, chess, and carrom. Additionally, a fully equipped gymnasium caters to fitness enthusiasts. These facilities provide students with opportunities to engage in sports, improve their skills, and participate in inter-college and national-level competitions
+                </p>
+                <div class="facilities">
+                    <div class="outdoor">
+                        <h3>Outdoor Facilities</h3>
+                        <ul>
+                            <li>Lawn Tennis Court</li>
+                            <li>Basketball Court</li>
+                            <li>Leather Ball Cricket Ground</li>
+                            <li>Football Field</li>
+                            <li>Volleyball Court</li>
+                            <li>Kho-Kho Ground</li>
+                            <li>Throwball Court</li>
+                            <li>Kabaddi Court</li>
+                        </ul>
+                    </div>
+                    <div class="indoor">
+                        <h3>Indoor Facilities</h3>
+                        <ul>
+                            <li>Table Tennis</li>
+                            <li>Carrom</li>
+                            <li>Chess</li>
+                            <li>Shuttle Badminton</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section id="events" class="events">
+        <div class="container">
+            <h2>Upcoming Events</h2>
+            <p class="intro">
+            JSSATEB is excited to announce its upcoming sports events, featuring thrilling competitions in athletics and team sports.<br>Highlights include 100m, 400m, 800m races, the 4x100m relay, shot put, long jump, and exciting team matches.<br>These events aim to foster camaraderie and showcase the athletic prowess of our students. Stay tuned for dates and updates!
+            </p>
+            <div class="event-cards">
+                <div class="card">
+                    <img src="images/basketball.jpeg" alt="Basketball">
+                    <h3>Basketball</h3>
+                    <p>Date: 25/12/2024</p>
+                    <p>Registration Fee: Rs. 1000</p>
+                    <a href="https://forms.gle/cpAgwLAuWoY7xZ52A" target="_blank" rel="noopener">
+                        <button>Register</button>
+                    </a>
+                </div>
+                <div class="card">
+                    <img src="images/cricket.jpeg" alt="Cricket">
+                    <h3>Cricket</h3>
+                    <p>Date: 22/12/2024</p>
+                    <p>Registration Fee: Rs. 100</p>
+                    <a href="https://forms.gle/cpAgwLAuWoY7xZ52A" target="_blank" rel="noopener">
+                        <button>Register</button>
+                    </a>
+                </div>
+                <div class="card">
+                    <img src="images/volleyball.jpeg" alt="Volleyball">
+                    <h3>Volleyball</h3>
+                    <p>Date: 24/12/2024</p>
+                    <p>Registration Fee: Rs. 600</p>
+                    <a href="https://forms.gle/cpAgwLAuWoY7xZ52A" target="_blank" rel="noopener">
+                        <button>Register</button>
+                    </a>
+                </div>
+                <div class="card">
+                    <img src="images/kabaddi.jpeg" alt="Kabaddi">
+                    <h3>Kabaddi</h3>
+                    <p>Date: 25/12/2024</p>
+                    <p>Registration Fee: Rs. 600</p>
+                    <a href="https://forms.gle/cpAgwLAuWoY7xZ52A" target="_blank" rel="noopener">
+                        <button>Register</button>
+                    </a>
+                </div>
+                <div class="card">
+                    <img src="images/badminton.jpg" alt="Badminton">
+                    <h3>Badminton</h3>
+                    <p>Date: 26/12/2024</p>
+                    <p>Registration Fee: Rs.50</p>
+                    <a href="https://forms.gle/cpAgwLAuWoY7xZ52A" target="_blank" rel="noopener">
+                        <button>Register</button>
+                    </a>
+                </div>
+                <div class="card">
+                    <img src="images/tennis.jpeg" alt="Tennis">
+                    <h3>Tennis</h3>
+                    <p>Date: 22/12/2024</p>
+                    <p>Registration Fee: Rs. 100</p>
+                    <a href="https://forms.gle/cpAgwLAuWoY7xZ52A" target="_blank" rel="noopener">
+                        <button>Register</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+            <!-- Achievements Section HTML -->
+    <section id="achievements" class="achievements-section">
+        <div class="container">
+            <div class="achievements-content">
+                <h2>Achievements</h2>
+                <p class="intro">
+                    Celebrating the exceptional performances of our students and teams in various sports at inter-collegiate, zonal, and state-level tournaments.
+                </p>
+                <div class="achievement-list">
+                    <div class="achievement">
+                        <h3>2018-2019</h3>
+                        <ul>
+                            <li>Silver Medal in Table Tennis by Deepak K Desai</li>
+                            <li>Semi Finals in Table Tennis (Women's Team)</li>
+                            <li>Quarter Finals in Football (Men's Team)</li>
+                        </ul>
+                    </div>
+                    <div class="achievement">
+                        <h3>2019-2020</h3>
+                        <ul>
+                            <li>Gold Medal in Table Tennis by Priyanka K</li>
+                            <li>Bronze Medal in Taekwondo by Roshan Singh</li>
+                            <li>Quarter Finals in Football (Men's Team)</li>
+                        </ul>
+                    </div>
+                    <div class="achievement">
+                        <h3>2020-2021</h3>
+                        <ul>
+                            <li>Gold Medal in Floor Ball by Abhigna Jayanth S Shekar</li>
+                            <li>Semi Finals in Table Tennis (Women's Team)</li>
+                            <li>Quarter Finals in Cricket Tournament (Men's Team)</li>
+                        </ul>
+                    </div>
+                    <div class="achievement">
+                        <h3>2021-2022</h3>
+                        <ul>
+                            <li>Gold Medal in High Jump by Raksha N (3rd Sem, E&C)</li>
+                            <li>Quarter Finals in Basketball (Men & Women Teams)</li>
+                            <li>Bronze Medal in Lawn Tennis (Men's Team)</li>
+                        </ul>
+                    </div>
+                    <div class="achievement">
+                        <h3>2022-2023</h3>
+                        <ul>
+                            <li>Bronze Medal in High Jump by Abhigna Yaji (3rd Sem, E&C)</li>
+                            <li>Semi Finals in Badminton (Men's Team)</li>
+                            <li>Quarter Finals in Football (Men's Team)</li>
+                        </ul>
+                    </div>
+                    <div class="achievement">
+                        <h3>2023-2024</h3>
+                        <ul>
+                            <li>Gold Medal in Athletic Meet by Ajay Kumar Reddy (3rd Sem, Mech)</li>
+                            <li>Bronze Medal in Taekwondo by Vinay Gowda (7th Sem, E&C)</li>
+                            <li>Semi Finals in Cricket (Men's Team)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Login Section -->
+    <section id="login" class="section">
+        <h2>Login</h2>
+        <div id="login-form">
+            <label for="username">Username:</label>
+            <input type="text" id="username" placeholder="Enter Username" required>
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" placeholder="Enter Password" required>
+            
+            <label for="role">Login As:</label>
+            <select id="role">
+                <option value="user">User</option>
+                <option value="admin">Admin</option>
+            </select>
+            
+            <button onclick="login()">Login</button>
+            <p>Don't have an account? <a href="register.html">Register here</a></p>
+
+        </div>
+        <p id="login-error"></p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 JSSATEB Sports Department. All rights reserved.</p>
+    </footer>
+    
+    <!-- Scripts -->
+    <script src="app.js"></script>
+</body>
+</html>
